@@ -4,13 +4,14 @@
   "version": "0.0.0",
   "scripts": {
     "commit": "cz",
-    "dev": "vite --host",
+    "dev": "vite --host --port 8080",
     "build": "vue-tsc --noEmit && vite build",
     "preview": "vite preview",
     "prepare": "husky install"
   },
   "dependencies": {
     "@vueuse/core": "^8.6.0",
+    "axios": "^0.27.2",
     "pinia": "^2.0.14",
     "vue": "^3.2.25",
     "vue-router": "^4.0.16"

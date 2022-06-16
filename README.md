@@ -15,3 +15,7 @@ npm run dev
 - [3. 项目初始化eslint和prettier配置](https://juejin.cn/post/7109430711295639583/)
 - [4. vite路径别名@配置](https://juejin.cn/post/7109752566665183268/)
 - [5. Tailwind CSS使用](https://juejin.cn/post/7109738207360581663/)
+- [6. env配置环境变量](https://vitejs.cn/guide/env-and-mode.html)
+
+# anywhere插件介绍
+可以启动一个静态服务
