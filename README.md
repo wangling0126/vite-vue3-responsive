@@ -6,6 +6,7 @@ npm run dev
 ```
 # 项目说明
 该项目使用技术栈为 vite+vue3+typescript
+该项目是响应式的，根据所在设备不同，构建不同的路由表
 
 # 功能实现汇总
 - [1. 项目初始化](https://blog.csdn.net/qq_39652397/article/details/123524130)

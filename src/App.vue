@@ -5,7 +5,8 @@ console.log(a, b)
 </script>
 
 <template>
-	<h2>初始化页面</h2>
+	<img src="https://vitejs.cn/logo.svg" alt="图片" class="bg-red-500" />
+	<div class="bg-red-500 text-3xl">haha</div>
 </template>
 
 <style></style>
