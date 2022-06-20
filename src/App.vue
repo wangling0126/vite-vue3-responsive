@@ -4,4 +4,8 @@
 	<router-view></router-view>
 </template>
 
-<style></style>
+<style>
+body {
+	height: 100vh;
+}
+</style>

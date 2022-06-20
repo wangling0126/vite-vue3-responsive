@@ -16,6 +16,8 @@ npm run dev
 - [4. vite路径别名@配置](https://juejin.cn/post/7109752566665183268/)
 - [5. Tailwind CSS使用](https://juejin.cn/post/7109738207360581663/)
 - [6. env配置环境变量](https://vitejs.cn/guide/env-and-mode.html)
+- [7. Vue3 在setup中定义name属性 ](https://juejin.cn/post/7110021658378780708/)
+- [8. vite+vue3里使用svgIcon图标](https://juejin.cn/post/7110097401397903373)
 
 # anywhere插件介绍
 可以启动一个静态服务

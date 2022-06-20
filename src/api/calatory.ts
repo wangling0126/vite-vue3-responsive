@@ -1,10 +1,9 @@
-import request from '@/utils/request'
-
+import http from '@/utils/request'
 /**
  * 获取分类列表
  */
 export const getCategory = () => {
-	return request({
+	return http.request({
 		url: '/category'
 	})
 }

@@ -1,13 +1,24 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import { join } from 'path'
+import vueSetupExtend from 'vite-plugin-vue-setup-extend'
+import * as path from 'path'
 // https://vitejs.dev/config/
+import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 export default defineConfig({
-	plugins: [vue()],
+	plugins: [
+		vue(),
+		vueSetupExtend(),
+		createSvgIconsPlugin({
+			// 指定需要缓存的图标文件夹
+			iconDirs: [path.resolve(process.cwd(), 'src/assets/icons')],
+			// 指定symbolId格式
+			symbolId: 'icon-[name]'
+		})
+	],
 	// 软链接
 	resolve: {
 		alias: {
-			'@': join(__dirname, '/src')
+			'@': path.join(__dirname, '/src')
 		}
 	},
 	server: {
