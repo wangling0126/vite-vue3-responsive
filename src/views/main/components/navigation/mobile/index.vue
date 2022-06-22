@@ -33,24 +33,20 @@
 </template>
 
 <script setup lang="ts" name="navigationMobile">
-import { computed, nextTick, PropType, ref, toRefs, watch } from 'vue'
-import { ICategoryItem } from '@/views/main/components/navigation/index.vue'
+import { computed, nextTick, ref, watch } from 'vue'
+import { useCategoryStore } from '@/store/modules/category'
 
-const props = defineProps({
-	data: {
-		type: Array as PropType<ICategoryItem[]>
-	}
-})
-const { data } = toRefs(props)
+const store = useCategoryStore()
+const data = store.categorys
 const activeIndex = ref(0)
 const activeName = computed(() => {
-	if (!data?.value?.length) {
+	if (!data?.length) {
 		return ''
 	}
-	const currentItem = data.value.find((item, index) => {
+	const currentItem = data.find((item, index) => {
 		return index === activeIndex.value
 	})
-	return currentItem ? currentItem.name : data.value[0].name
+	return currentItem ? currentItem.name : data[0].name
 })
 const sliderStyle = ref({
 	transform: 'translateX(60px)',
