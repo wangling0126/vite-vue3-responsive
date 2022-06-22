@@ -9,3 +9,8 @@ export interface ICategory {
 	categorys: ICategoryItem[]
 	currentCategory: ICategoryItem
 }
+
+export type IThemeType = 'light' | 'dark' | 'system'
+export interface IThemeState {
+	themeType: IThemeType
+}

@@ -10,7 +10,11 @@
 		</transition>
 		<!--		内容区-->
 		<transition name="popup-down-up">
-			<div class="fixed left-0 right-0 bg-white z-[1000] max-h-[80%] overflow-y-auto bottom-0" v-if="isOpen" v-bind="$attrs">
+			<div
+				class="dark:bg-zinc-800 fixed left-0 right-0 bg-white z-[1000] max-h-[80%] overflow-y-auto bottom-0"
+				v-if="isOpen"
+				v-bind="$attrs"
+			>
 				<!--			内容插槽-->
 				<slot></slot>
 			</div>

@@ -24,33 +24,33 @@
 </template>
 
 <script setup lang="ts" name="header-theme">
-import { THEME_DARK, THEME_LIGHT, THEME_SYSTEM } from '@/constants'
 import { useThemeStore } from '@/store/modules/theme'
 import { computed, toRaw } from 'vue'
+import { IThemeType } from '@/store/interface'
 const themeStore = useThemeStore()
 console.log(toRaw(themeStore))
 interface Itheme {
 	id: string
-	type: string
+	type: IThemeType
 	icon: string
 	name: string
 }
 const themeArr: Itheme[] = [
 	{
 		id: '0',
-		type: THEME_LIGHT,
+		type: 'light',
 		icon: 'theme-light',
 		name: '极简白'
 	},
 	{
 		id: '1',
-		type: THEME_DARK,
+		type: 'dark',
 		icon: 'theme-dark',
 		name: '极夜黑'
 	},
 	{
 		id: '2',
-		type: THEME_SYSTEM,
+		type: 'system',
 		icon: 'theme-system',
 		name: '跟随系统'
 	}
