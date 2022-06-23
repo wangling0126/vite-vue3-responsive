@@ -13,7 +13,8 @@ export const useCategoryStore = defineStore('category', {
 		currentCategoryIndex: state => {
 			const index = state.categorys.findIndex(item => item.name === state.currentCategory.name)
 			return index > -1 ? index : 0
-		}
+		},
+		currentCategoryName: state => state.currentCategory.name || '美女'
 	},
 	actions: {
 		/**
@@ -22,10 +23,10 @@ export const useCategoryStore = defineStore('category', {
 		async useCategoryData() {
 			const res = await getCategory()
 			const data: ICategoryItem[] = res.calagoryList || []
-			const all: ICategoryItem = {
-				name: '全部'
-			}
-			this.categorys = [all, ...data]
+			// const all: ICategoryItem = {
+			// 	name: '森林'
+			// }
+			this.categorys = [...data]
 		},
 		useCurrentCategory(item: ICategoryItem) {
 			this.currentCategory = item

@@ -1,27 +1,40 @@
 import { defineStore } from 'pinia'
 import { IPexelsState } from '@/store/interface'
-import piniaPersistConfig from '@/utils/piniaPersistConfig'
 import { getPexelsList, IPexelsParamsInfo } from '@/api/pexels'
 // useStore 可以是 useUser、useCart 之类的任何东西
 // 第一个参数是应用程序中 store 的唯一 id
 export const usePexelsStore = defineStore('pexels', {
 	state: (): IPexelsState => {
 		return {
-			pexelsList: []
+			pexelsList: [],
+			pageInfo: {
+				page: 1,
+				per_page: 20,
+				total: null
+			}
 		}
+	},
+	getters: {
+		isFinished: state => state.pageInfo.total === state.pexelsList.length
 	},
 	actions: {
 		/**
-		 *  切换主题模式
+		 *  获取图片路径
 		 */
 		async changePexelsList(data: IPexelsParamsInfo) {
-			if (this.pexelsList.length) {
-				return
+			const { photos, page, per_page, total_results: total } = await getPexelsList(data)
+			if (page === 1) {
+				this.pexelsList = photos || []
+			} else {
+				this.pexelsList.push(...photos)
 			}
-			const res = await getPexelsList(data)
-			console.log(res)
-			this.pexelsList = res.photos || []
+
+			this.pageInfo = {
+				page: page,
+				per_page: per_page,
+				total: total
+			}
 		}
-	},
-	persist: piniaPersistConfig('pexels')
+	}
+	// persist: piniaPersistConfig('pexels')
 })

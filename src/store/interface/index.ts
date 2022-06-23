@@ -45,6 +45,12 @@ export interface IPexelsItem {
 	alt: string
 	_style?: IPexelsItemStyle | null
 }
+interface IPageInfo {
+	page: number
+	per_page: number
+	total: number | null
+}
 export interface IPexelsState {
 	pexelsList: IPexelsItem[]
+	pageInfo: IPageInfo
 }

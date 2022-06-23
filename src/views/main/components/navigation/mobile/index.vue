@@ -16,11 +16,14 @@
 			</li>
 			<!--			items-->
 			<li
-				v-for="(item, index) in data"
+				v-for="item in data"
 				:key="item.name"
 				class="shrink-0 px-1.5 py-0.5 z-10 duration-200 last:mr-4"
-				:class="{ 'nav-active': item.name === activeName, 'text-zinc-100 ': item.name === activeName }"
-				@click="e => changeActive(e, index)"
+				:class="{
+					'nav-active': item.name === store.currentCategoryName,
+					'text-zinc-100 ': item.name === store.currentCategoryName
+				}"
+				@click="e => changeActive(item)"
 			>
 				{{ item.name }}
 			</li>
@@ -29,10 +32,13 @@
 	<m-pop-up v-model:visible="dialogVisible">
 		<div
 			class="text-center text-xs py-1"
-			:class="{ 'text-zinc-100 ': item.name === activeName, 'bg-zinc-900': item.name === activeName }"
-			v-for="(item, index) in data"
+			:class="{
+				'text-zinc-100 ': item.name === store.currentCategoryName,
+				'bg-zinc-900': item.name === store.currentCategoryName
+			}"
+			v-for="item in data"
 			:key="item.name"
-			@click="() => changeDialogActive(index)"
+			@click="() => changeDialogActive(item)"
 		>
 			{{ item.name }}
 		</div>
@@ -40,21 +46,14 @@
 </template>
 
 <script setup lang="ts" name="navigationMobile">
-import { computed, nextTick, ref, watch } from 'vue'
+import { nextTick, ref, watch } from 'vue'
 import { useCategoryStore } from '@/store/modules/category'
+import { ICategoryItem } from '@/store/interface'
 
 const store = useCategoryStore()
 const data = store.categorys
 const activeIndex = ref(0)
-const activeName = computed(() => {
-	if (!data?.length) {
-		return ''
-	}
-	const currentItem = data.find((item, index) => {
-		return index === activeIndex.value
-	})
-	return currentItem ? currentItem.name : data[0].name
-})
+
 const sliderStyle = ref({
 	transform: 'translateX(60px)',
 	width: '60px'
@@ -68,7 +67,7 @@ const setSlideStyle = (activeDom: EventTarget) => {
 }
 
 watch(
-	[() => 'props.data', activeIndex],
+	[() => 'props.data', () => store.currentCategoryIndex],
 	() => {
 		nextTick(() => {
 			const activeDom = document.querySelector('.nav-active')
@@ -89,12 +88,12 @@ const openDialog = () => {
 	dialogVisible.value = true
 }
 
-const changeActive = (e: Event, index: number) => {
-	activeIndex.value = index
+const changeActive = (item: ICategoryItem) => {
+	store.currentCategory = item
 }
 
-const changeDialogActive = (index: number) => {
-	activeIndex.value = index
+const changeDialogActive = (item: ICategoryItem) => {
+	store.currentCategory = item
 	dialogVisible.value = false
 }
 </script>
