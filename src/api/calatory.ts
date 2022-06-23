@@ -1,9 +1,9 @@
-import http from '@/utils/request'
+import http, { getApiPrev, IApiPrev } from '@/utils/request'
 /**
  * 获取分类列表
  */
 export const getCategory = () => {
 	return http.request({
-		url: '/category'
+		url: getApiPrev(IApiPrev.reponsive) + '/category'
 	})
 }

@@ -1,10 +1,17 @@
 <template>
-	<div class="bg-white sticky flex top-0 left-0 z-10">
-		<ul class="flex relative overflow-x-auto p-1 text-xs text-zinc-600 overflow-hidden">
+	<div class="bg-white dark:bg-zinc-900 duration-500 sticky top-0 left-0 z-10">
+		<ul class="relative flex overflow-x-auto p-1 text-xs text-zinc-600 overflow-hidden">
 			<!--			处理滑块-->
-			<li ref="sliderRef" class="absolute h-[22px] bg-zinc-900 rounded-lg duration-200 w-2.5" :style="sliderStyle"></li>
+			<li
+				ref="sliderRef"
+				class="absolute h-[22px] bg-zinc-900 dark:bg-zinc-800 rounded-lg duration-200"
+				:style="sliderStyle"
+			></li>
 			<!--			汉堡按钮-->
-			<li class="z-20 fixed top-0 right-[-1px] h-4 px-1 flex items-center bg-white shadow-l-white" @click="openDialog">
+			<li
+				class="z-20 fixed top-0 right-[-1px] h-4 px-1 flex items-center bg-white dark:bg-zinc-900 shadow-l-white dark:shadow-l-zinc"
+				@click="openDialog"
+			>
 				<m-svg-icon class="w-1.5 h-1.5" name="hamburger"></m-svg-icon>
 			</li>
 			<!--			items-->

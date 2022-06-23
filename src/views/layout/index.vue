@@ -13,6 +13,14 @@
 import headerVue from './components/header/index.vue'
 import mainVue from './components/main/index.vue'
 import floatingVue from './components/floating/index.vue'
+import { usePexelsStore } from '@/store/modules/pexels'
+const pexelsStore = usePexelsStore()
+
+pexelsStore.changePexelsList({
+	page: 1,
+	per_page: 40,
+	query: '美女'
+})
 </script>
 
 <style lang="scss" scoped></style>

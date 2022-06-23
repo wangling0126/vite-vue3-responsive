@@ -3,7 +3,7 @@
 		<!--		modal层-->
 		<transition name="fade">
 			<div
-				class="fixed left-0 right-0 bottom-0 top-0 h-screen w-full bg-zinc-900/80 z-[999]"
+				class="fixed left-0 right-0 bottom-0 top-0 h-screen w-full bg-zinc-900/80 z-40"
 				@click="isOpen = false"
 				v-if="isOpen"
 			></div>
@@ -11,7 +11,7 @@
 		<!--		内容区-->
 		<transition name="popup-down-up">
 			<div
-				class="dark:bg-zinc-800 fixed left-0 right-0 bg-white z-[1000] max-h-[80%] overflow-y-auto bottom-0"
+				class="dark:bg-zinc-800 fixed left-0 right-0 bg-white z-50 max-h-[80%] overflow-y-auto bottom-0"
 				v-if="isOpen"
 				v-bind="$attrs"
 			>

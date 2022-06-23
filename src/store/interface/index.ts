@@ -14,3 +14,37 @@ export type IThemeType = 'light' | 'dark' | 'system'
 export interface IThemeState {
 	themeType: IThemeType
 }
+
+/* IPexels接口*/
+export interface IPexelsSrc {
+	original: string
+	large2x: string
+	large: string
+	medium: string
+	small: string
+	portrait: string
+	landscape: string
+	tiny: string
+}
+
+export interface IPexelsItemStyle {
+	left?: number
+	top?: number
+}
+export interface IPexelsItem {
+	id: number
+	width: number
+	height: number
+	url: string
+	photographer: string
+	photographer_url: string
+	photographer_id: number
+	avg_color: string
+	src: IPexelsSrc
+	liked: boolean
+	alt: string
+	_style?: IPexelsItemStyle | null
+}
+export interface IPexelsState {
+	pexelsList: IPexelsItem[]
+}

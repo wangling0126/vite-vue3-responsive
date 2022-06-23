@@ -27,6 +27,12 @@ export default defineConfig({
 				target: 'http://localhost:3000',
 				changeOrigin: true
 				// rewrite: path => path.replace(/^\/reponsive/, '/reponsive')
+			},
+			//	GET https://api.pexels.com/v1/curated
+			'/pexels': {
+				target: 'https://api.pexels.com',
+				changeOrigin: true,
+				rewrite: path => path.replace(/^\/pexels/, '')
 			}
 		}
 	}
